@@ -177,7 +177,7 @@ Características principales:
 - No requiere aplicaciones nativas.
 - Open source.
 
-MindAR procesa el reconocimiento de imagen y posiciona los objetos 3D en la escena.
+MindAR procesa el reconocimiento de imagen y posiciona los objetos 3D en la escena..
 
 ## Configuración de MindAR (`new MindARThree`)
 
