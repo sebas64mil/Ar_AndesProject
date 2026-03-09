@@ -179,6 +179,226 @@ Características principales:
 
 MindAR procesa el reconocimiento de imagen y posiciona los objetos 3D en la escena.
 
+## Configuración de MindAR (`new MindARThree`)
+
+Para iniciar una experiencia de realidad aumentada con MindAR y Three.js, se crea una instancia del motor AR utilizando la clase `MindARThree`. Esta instancia recibe un objeto de configuración que define cómo funcionará el sistema de tracking, la interfaz y el renderizado.
+
+### Inicialización
+
+```javascript
+mindarThree = new MindARThree({
+  container,
+  imageTargetSrc: './Assets/Targets/targets2.mind',
+  uiScanning: false,
+  uiLoading: false,
+  maxTrack: 1,
+  filterMinCF: 0.0001,
+  filterBeta: 0.01,
+});
+```
+
+Este objeto de configuración controla distintos aspectos del comportamiento de la experiencia AR.
+
+## Propiedades del objeto de configuración
+
+### `container`
+
+Define el elemento HTML donde se renderizará la experiencia AR.
+
+```javascript
+const container = document.querySelector('#ar-container');
+```
+
+MindAR insertará dentro de este contenedor:
+
+- el video de la cámara del dispositivo
+- el canvas de Three.js donde se renderizan los objetos 3D
+
+Estructura aproximada generada:
+
+```text
+div#ar-container
+ ├── video (stream de la cámara)
+ └── canvas (render de Three.js)
+```
+
+### `imageTargetSrc`
+
+Indica la ruta del archivo `.mind` que contiene los targets de reconocimiento de imagen.
+
+```javascript
+imageTargetSrc: './Assets/Targets/targets2.mind'
+```
+
+Este archivo no es una imagen normal. Se genera utilizando el compilador de targets de MindAR.
+
+Flujo de generación:
+
+```text
+imagen.jpg
+    ↓
+MindAR Compiler
+    ↓
+targets.mind
+    ↓
+MindAR usa este archivo para detectar la imagen en cámara
+```
+
+Cuando la cámara detecta una imagen incluida en el archivo `.mind`, MindAR calcula:
+
+- posición
+- rotación
+- escala relativa
+
+y activa el anchor asociado al target.
+
+### `uiScanning`
+
+Controla la interfaz de escaneo por defecto de MindAR.
+
+```javascript
+uiScanning: false
+```
+
+Por defecto MindAR muestra un mensaje o guía visual indicando que el sistema está buscando un target.
+
+Al establecer `false`:
+
+- se desactiva la interfaz automática
+- el desarrollador puede implementar su propia UI personalizada
+
+### `uiLoading`
+
+Controla la pantalla de carga automática de MindAR.
+
+```javascript
+uiLoading: false
+```
+
+Si está activado, MindAR muestra un mensaje de carga mientras prepara:
+
+- la cámara
+- el sistema de tracking
+- los assets necesarios
+
+Al desactivarlo, el proyecto puede manejar su propio sistema de carga o indicadores de estado.
+
+### `maxTrack`
+
+Define el número máximo de targets que pueden ser rastreados simultáneamente.
+
+```javascript
+maxTrack: 1
+```
+
+Ejemplo:
+
+```text
+targets disponibles:
+target1
+target2
+target3
+```
+
+Con `maxTrack: 1` el sistema solo seguirá un target a la vez.
+
+Si se aumenta el valor:
+
+```javascript
+maxTrack: 3
+```
+
+MindAR podrá rastrear hasta tres imágenes simultáneamente.
+
+Hay que tener en cuenta que más targets activos implican:
+
+- mayor uso de CPU
+- mayor carga de procesamiento en el tracking
+
+### `filterMinCF`
+
+Controla la sensibilidad del sistema de tracking.
+
+```javascript
+filterMinCF: 0.0001
+```
+
+CF significa Confidence Factor.
+
+Este parámetro define qué tan seguro debe estar el sistema antes de actualizar la posición del objeto AR.
+
+Valores típicos:
+
+```text
+valores bajos  → tracking más rápido pero menos estable
+valores altos  → tracking más estable pero menos reactivo
+```
+
+El valor utilizado (`0.0001`) hace que el sistema responda rápidamente a los cambios de posición del target.
+
+### `filterBeta`
+
+Controla el suavizado del movimiento del objeto AR.
+
+```javascript
+filterBeta: 0.01
+```
+
+Este parámetro actúa como un filtro que reduce el jitter o vibración del objeto 3D cuando el tracking detecta pequeñas variaciones en la posición del target.
+
+Comportamiento típico:
+
+```text
+0.001 → movimiento muy suave pero con retraso
+0.01  → equilibrio entre estabilidad y respuesta
+0.1   → respuesta rápida pero menos suavizada
+```
+
+El valor `0.01` ofrece un equilibrio adecuado para la mayoría de experiencias AR.
+
+## Flujo interno de inicialización
+
+Cuando se ejecuta:
+
+```javascript
+mindarThree = new MindARThree(config);
+```
+
+MindAR prepara internamente:
+
+1. El sistema de renderizado de Three.js.
+2. La escena (`scene`).
+3. La cámara (`camera`).
+4. El renderer (`renderer`).
+5. El motor de reconocimiento de imágenes.
+6. La carga del archivo `.mind`.
+
+Posteriormente, al ejecutar:
+
+```javascript
+await mindarThree.start();
+```
+
+ocurre el siguiente flujo:
+
+```text
+usuario concede permiso de cámara
+	↓
+se inicia el stream de video
+	↓
+MindAR analiza cada frame de la cámara
+	↓
+si detecta un target
+	↓
+calcula la posición 3D del target
+	↓
+activa el anchor correspondiente
+	↓
+Three.js renderiza los objetos asociados
+```
+
+Este proceso permite que los objetos 3D aparezcan anclados a la imagen detectada en el mundo real, creando la experiencia de realidad aumentada.
+
 ## Posibles herramientas futuras
 
 El proyecto prioriza la experiencia de Realidad Aumentada, por lo que las tecnologías adicionales se evaluarán solo si no afectan el rendimiento de AR.
