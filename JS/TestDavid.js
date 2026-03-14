@@ -115,7 +115,7 @@
     await mindarThree.start();
     started = true;
     stopButton.disabled = false;
-    updateStatus('Camara activa. Apunta al target para ver el objeto.');
+    updateStatus('Camara activa. Apunta al target para ver el objeto.'); 
 
     renderer.setAnimationLoop(() => {
       if (!started) {
