@@ -1,147 +1,57 @@
-  import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
-  import { MindARThree } from 'https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-three.prod.js';
+import * as THREE from 'three';
+import Stats from 'three/addons/libs/stats.module.js';
+import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-  const container = document.querySelector('#ar-container');
-  const startButton = document.querySelector('#start-ar');
-  const stopButton = document.querySelector('#stop-ar');
-  const statusText = document.querySelector('#status-text');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-  let started = false;
-  let mindarThree;
-  let renderer;
-  let scene;
-  let camera;
-  let previewGroup;
-  let sceneReady = false;
+let stats;
 
-  const updateStatus = (message) => {
-    statusText.textContent = message;
-  };
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setAnimationLoop(animate);
+document.body.appendChild(renderer.domElement);
 
-  const createPreviewObject = () => {
-    const group = new THREE.Group();
+const geometry = new THREE.BoxGeometry(1,1,1);
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
 
-    const baseMaterial = new THREE.MeshStandardMaterial({
-      color: 0xff7a18,
-      metalness: 0.25,
-      roughness: 0.35,
-    });
+stats = new Stats();
+document.body.appendChild(stats.dom);
 
-    const secondaryMaterial = new THREE.MeshStandardMaterial({
-      color: 0x1f7a8c,
-      metalness: 0.1,
-      roughness: 0.5,
-    });
+camera.position.z = 5;
 
-    const cube = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.5, 0.5), baseMaterial);
-    cube.position.set(0, 0.3, 0);
+const params = {
+  visible: true,
+  wireframe: false,
+  speed: 1
+};
 
-    const torus = new THREE.Mesh(
-      new THREE.TorusKnotGeometry(0.16, 0.05, 96, 16),
-      secondaryMaterial,
-    );
-    torus.position.set(0, 0.8, 0);
-    torus.scale.setScalar(0.8);
+createPanel();
 
-    const floor = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.6, 0.7, 0.1, 32),
-      new THREE.MeshStandardMaterial({ color: 0xf5f0e1, roughness: 0.9 }),
-    );
-    floor.position.set(0, -0.05, 0);
+function createPanel() {
 
-    group.add(cube, torus, floor);
-    group.scale.setScalar(0.6);
+  const panel = new GUI({ width: 310 });
 
-    return { group, cube, torus };
-  };
+  const folder1 = panel.addFolder('Visibility');
+  folder1.add(params, 'visible').onChange(v => cube.visible = v);
 
-  const setupScene = () => {
-    if (sceneReady) {
-      return;
-    }
+  const folder2 = panel.addFolder('Activation/Deactivation');
+  folder2.add(material, 'wireframe');
 
-    const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x7a8ca5, 1.4);
-    scene.add(hemisphereLight);
+  const folder3 = panel.addFolder('General Speed');
+  folder3.add(params, 'speed', 0, 5, 0.1);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
-    directionalLight.position.set(1, 2, 1.5);
-    scene.add(directionalLight);
+}
 
-    const anchor = mindarThree.addAnchor(0);
-    const preview = createPreviewObject();
-    previewGroup = preview;
-    anchor.group.add(preview.group);
-    sceneReady = true;
-  };
+function animate(time) {
 
-  const stopAR = () => {
-    if (!started || !mindarThree) {
-      return;
-    }
+  cube.rotation.x = (time / 2000) * params.speed;
+  cube.rotation.y = (time / 1000) * params.speed;
 
-    renderer.setAnimationLoop(null);
-    mindarThree.stop();
-    started = false;
-    startButton.disabled = false;
-    stopButton.disabled = true;
-    updateStatus('Camara detenida.');
-  };
+  renderer.render(scene, camera);
+  stats.update();
 
-  const startAR = async () => {
-    if (started) {
-      return;
-    }
-
-    startButton.disabled = true;
-    stopButton.disabled = true;
-    updateStatus('Solicitando acceso a la camara...');
-
-    try {
-      if (!mindarThree) {
-        mindarThree = new MindARThree({
-        container,
-        imageTargetSrc: '../Assets/Targets/targets2.mind',
-        uiScanning: false,
-        uiLoading: false,
-        maxTrack: 1,
-        filterMinCF: 0.0001,
-        filterBeta: 0.01,
-      });
-
-      ({ renderer, scene, camera } = mindarThree);
-      setupScene();
-    }
-
-    await mindarThree.start();
-    started = true;
-    stopButton.disabled = false;
-    updateStatus('Camara activa. Apunta al target para ver el objeto.');
-
-    renderer.setAnimationLoop(() => {
-      if (!started) {
-        return;
-      }
-
-        previewGroup.cube.rotation.x += 0.01;
-        previewGroup.cube.rotation.y += 0.02;
-        previewGroup.torus.rotation.x -= 0.015;
-        previewGroup.torus.rotation.z += 0.02;
-        renderer.render(scene, camera);
-    });
-    } catch (error) {
-      console.error(error);
-      updateStatus('No se pudo iniciar. Usa localhost y acepta permisos de camara.');
-      startButton.disabled = false;
-      stopButton.disabled = true;
-    }
-  };
-
-  startButton.addEventListener('click', () => {
-    startAR();
-  });
-
-  stopButton.addEventListener('click', () => {
-    stopAR();
-  });
-
-  stopButton.disabled = true;
+}
