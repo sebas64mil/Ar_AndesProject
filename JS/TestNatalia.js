@@ -6,6 +6,16 @@
   const stopButton = document.querySelector('#stop-ar');
   const statusText = document.querySelector('#status-text');
 
+const uiLoading = document.querySelector("#ui-loading");
+const uiCamera = document.querySelector("#ui-camera");
+const uiScanning = document.querySelector("#ui-scanning");
+const uiDetected = document.querySelector("#ui-detected");
+
+uiLoading.style.display = "block";
+uiCamera.style.display = "none";
+uiScanning.style.display = "none";
+uiDetected.style.display = "none";
+
   let started = false;
   let mindarThree;
   let renderer;
@@ -68,6 +78,18 @@
     scene.add(directionalLight);
 
     const anchor = mindarThree.addAnchor(0);
+
+
+  anchor.onTargetFound = () => {
+    uiScanning.style.display = "none";
+    uiDetected.style.display = "block";
+  };
+
+  anchor.onTargetLost = () => {
+    uiDetected.style.display = "none";
+    uiScanning.style.display = "block";
+  };
+
     const preview = createPreviewObject();
     previewGroup = preview;
     anchor.group.add(preview.group);
@@ -84,6 +106,13 @@
     started = false;
     startButton.disabled = false;
     stopButton.disabled = true;
+
+    // resetear UI
+  uiScanning.style.display = "none";
+  uiDetected.style.display = "none";
+  uiCamera.style.display = "none";
+  uiLoading.style.display = "block";
+  
     updateStatus('Camara detenida.');
   };
 
@@ -95,6 +124,8 @@
     startButton.disabled = true;
     stopButton.disabled = true;
     updateStatus('Solicitando acceso a la camara...');
+    uiLoading.style.display = "none";
+    uiCamera.style.display = "block";
 
     try {
       if (!mindarThree) {
@@ -113,9 +144,12 @@
     }
 
     await mindarThree.start();
+    uiCamera.style.display = "none";
+    uiScanning.style.display = "block";
+    updateStatus('Buscando imagen objetivo...');
     started = true;
     stopButton.disabled = false;
-    updateStatus('Camara activa. Apunta al target para ver el objeto.');
+    //updateStatus('Camara activa. Apunta al target para ver el objeto.');
 
     renderer.setAnimationLoop(() => {
       if (!started) {
