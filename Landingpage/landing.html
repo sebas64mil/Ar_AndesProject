@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AR Spaces - Semillero</title>
+  <link rel="stylesheet" href="/Landingpage/styles.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="menu-icon">☰</div>
+    <h1>AR Spaces</h1>
+  </header>
+
+  <section class="hero">
+    <div class="overlay">
+      <h2>Explora Espacios en Realidad Aumentada</h2>
+
+      <div class="search-box">
+        <input type="text" placeholder="Buscar experiencias...">
+        <span></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <img src="/Landingpage/Assets/Comedor.png">
+      <span>Comedor AR</span>
+    </div>
+
+    <div class="card">
+      <img src="/Landingpage/Assets/Mapa.jpg">
+      <span>Mapa AR</span>
+    </div>
+
+    <div class="card">
+      <img src="/Landingpage/Assets/Park.jpg">
+      <span>Parque AR</span>
+    </div>
+
+    <div class="card">
+      <img src="/Landingpage/Assets/Pasillo.png">
+      <span>Pasillo AR</span>
+    </div>
+  </section>
+
+  <section class="feature">
+    <img src="/Landingpage/Assets/Clase.png">
+    <div class="feature-text">
+      <h3>Salón AR</h3>
+    </div>
+  </section>
+
+  <!-- Carrusel -->
+  <section class="seccion-tecnologias">
+  <h3>Tecnologías utilizadas</h3>
+
+  <div class="carrusel-wrapper">
+
+    <button class="btn-carrusel izquierda" onclick="moverCarrusel(-1)">❮</button>
+
+    <div class="carrusel-contenedor" id="carrusel">
+      <div class="carrusel-track">
+
+        <div class="item-tecnologia"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg"></div>
+        <div class="item-tecnologia"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"></div>
+        <div class="item-tecnologia"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"></div>
+        <div class="item-tecnologia"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"></div>
+        <div class="item-tecnologia"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg"></div>
+        <div class="item-tecnologia"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg"></div>
+
+      </div>
+    </div>
+
+    <button class="btn-carrusel derecha" onclick="moverCarrusel(1)">❯</button>
+
+  </div>
+</section>
+
+  <footer class="footer">
+
+    <div class="footer-section">
+      <h4>Califica tu experiencia</h4>
+      <div class="rating">
+        <span>⭐</span>
+        <span>⭐</span>
+        <span>⭐</span>
+        <span>⭐</span>
+        <span>⭐</span>
+      </div>
+    </div>
+
+    <div class="footer-section">
+      <h4>Contacto</h4>
+      <p>Email: multimedia@usbbog.edu.co</p>
+      <p>Ciudad: Bogotá, Colombia</p>
+    </div>
+
+    <div class="footer-section credits">
+      <p>
+        Proyecto desarrollado por la <strong>Universidad de San Buenaventura Bogotá</strong><br>
+        y compartido con la <strong>Universidad de los Andes</strong>
+      </p>
+    </div>
+
+    
+
+  </footer>
+
+    <script src="functions.js"></script>
+
+</body>
+</html>
