@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>8th Wall AR</title>
+
+  <script 
+      src="./external/runtime/runtime.js"
+      data-preload-chunks="slam"
+  ></script>
+  
+  <script src="./external/xr/xr.js" async="true" data-preload-chunks="slam"></script>
+
+</head>
+
+<body>
+
+  <style>
+
+    html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: black;
+}
+
+body {
+  position: fixed;
+  inset: 0;
+}
+
+#camerafeed {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: black;
+}
+
+
+  </style>
+
+  <canvas id="camerafeed"></canvas>
+
+  <script src="bundle.js"></script>
+
+</body>
+
+</html>
