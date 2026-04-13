@@ -9,11 +9,12 @@
   <title>8th Wall AR</title>
 
   <script 
-      src="./external/runtime/runtime.js"
+      src="../external/runtime/runtime.js"
       data-preload-chunks="slam"
   ></script>
   
-  <script src="./external/xr/xr.js" async="true" data-preload-chunks="slam"></script>
+  <script src="../external/xr/xr.js" async="true" data-preload-chunks="slam"></script>
+  <script src="./app.js" type="module"></script>
 
 </head>
 
@@ -49,7 +50,7 @@ body {
 
   <canvas id="camerafeed"></canvas>
 
-  <script src="bundle.js"></script>
+  <!-- <script src="bundle.js"></script> -->
 
 </body>
 
