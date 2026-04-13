@@ -13,9 +13,11 @@
     "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "outDir": "dist",
+    "rootDir": "src",
+    "ignoreDeprecations": "6.0",
     "paths": {
       "@8thwall/ecs": ["external/runtime/runtime.d.ts"]
-    },
+    }
   },
   "include": [
     "src",
