@@ -1,0 +1,23 @@
+{
+  "imagePath": "Image-Targets/egdg_luminance.png",
+  "metadata": null,
+  "name": "egdg",
+  "type": "PLANAR",
+  "properties": {
+    "top": 4,
+    "left": 0,
+    "width": 483,
+    "height": 644,
+    "isRotated": false,
+    "originalWidth": 483,
+    "originalHeight": 651
+  },
+  "resources": {
+    "originalImage": "egdg_original.png",
+    "croppedImage": "egdg_cropped.png",
+    "thumbnailImage": "egdg_thumbnail.png",
+    "luminanceImage": "egdg_luminance.png"
+  },
+  "created": 1776108799221,
+  "updated": 1776108799221
+}
