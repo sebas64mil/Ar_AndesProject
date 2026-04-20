@@ -1,0 +1,326 @@
+{
+  "objects": {
+    "47699d9e-18a5-4f88-a4f9-b8be92e8f74a": {
+      "components": {},
+      "geometry": null,
+      "id": "47699d9e-18a5-4f88-a4f9-b8be92e8f74a",
+      "light": {
+        "type": "ambient"
+      },
+      "material": null,
+      "name": "Ambient Light",
+      "position": [
+        10,
+        5,
+        5
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "parentId": "88453035-dc0f-486d-868a-8ff7c2fda864",
+      "order": 0.4038940050501252
+    },
+    "a608ddd9-9379-464d-966f-5d8d8674c83c": {
+      "camera": {
+        "type": "perspective",
+        "xr": {
+          "desktop": "disabled",
+          "xrCameraType": "world",
+          "headset": "disabled",
+          "phone": "AR",
+          "world": {
+            "enableVps": true
+          }
+        }
+      },
+      "components": {},
+      "geometry": null,
+      "id": "a608ddd9-9379-464d-966f-5d8d8674c83c",
+      "material": null,
+      "name": "Camera",
+      "position": [
+        0,
+        5.848828231225997,
+        8.951069894155014
+      ],
+      "rotation": [
+        -2.2030994446848444e-17,
+        0.970664096682128,
+        -0.2404396211365097,
+        -5.713173665988398e-17
+      ],
+      "scale": [
+        0.9999998646558032,
+        0.9999999931513278,
+        0.9999998715044741
+      ],
+      "parentId": "88453035-dc0f-486d-868a-8ff7c2fda864",
+      "order": 1.0308214152219775
+    },
+    "ac1989e3-3b71-49e2-a05f-e682aeb18c36": {
+      "components": {},
+      "geometry": null,
+      "id": "ac1989e3-3b71-49e2-a05f-e682aeb18c36",
+      "light": {
+        "intensity": 1,
+        "type": "directional"
+      },
+      "material": null,
+      "name": "Directional Light",
+      "position": [
+        20,
+        20,
+        10
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "parentId": "88453035-dc0f-486d-868a-8ff7c2fda864",
+      "order": 0.6644431107322474
+    },
+    "dde10eec-53a5-4513-8e63-152317749c25": {
+      "id": "dde10eec-53a5-4513-8e63-152317749c25",
+      "position": [
+        0,
+        2.6706641693561144,
+        -11.676130263531372
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        0.9999999999999998
+      ],
+      "scale": [
+        2.7597866176280887,
+        2.7597866176280887,
+        2.7597866176280887
+      ],
+      "geometry": null,
+      "material": null,
+      "parentId": "3569cfbf-2fbd-43aa-903b-0a10542180ba",
+      "components": {},
+      "name": "Image Target",
+      "imageTarget": {
+        "name": "imagen"
+      },
+      "order": 2.8334601293424955
+    },
+    "f6f572a2-99b8-4397-90f8-a3afbf2e00da": {
+      "id": "f6f572a2-99b8-4397-90f8-a3afbf2e00da",
+      "position": [
+        0,
+        0,
+        0.5001765774933798
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        0.5001765774933798,
+        0.5001765774933798,
+        0.5001765774933798
+      ],
+      "geometry": {
+        "type": "box",
+        "depth": 1,
+        "height": 1,
+        "width": 1
+      },
+      "material": {
+        "type": "basic",
+        "color": "#FFFFFF"
+      },
+      "parentId": "dde10eec-53a5-4513-8e63-152317749c25",
+      "components": {},
+      "name": "Box",
+      "order": 4.682232097340572
+    },
+    "3569cfbf-2fbd-43aa-903b-0a10542180ba": {
+      "id": "3569cfbf-2fbd-43aa-903b-0a10542180ba",
+      "position": [
+        0,
+        -20,
+        1.6751389964741583
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "geometry": null,
+      "material": null,
+      "parentId": "88453035-dc0f-486d-868a-8ff7c2fda864",
+      "components": {},
+      "name": "Map",
+      "map": {
+        "latitude": 37.7955281,
+        "longitude": -122.3934225,
+        "targetEntity": {
+          "type": "entity",
+          "id": ""
+        },
+        "radius": 500,
+        "spawnLocations": false,
+        "useGps": true
+      },
+      "mapTheme": {
+        "landColor": "#AEC988",
+        "buildingColor": "#EFEFEA",
+        "buildingOpacity": 0.4,
+        "parkColor": "#80B063",
+        "parkingColor": "#84A172",
+        "roadColor": "#DCE1DE",
+        "sandColor": "#AC92A6",
+        "transitColor": "#F9F8C7",
+        "waterColor": "#A0D3D3"
+      },
+      "order": 4.7669328827748485
+    },
+    "bb338783-e2dc-4242-83c6-a6aa57648b95": {
+      "id": "bb338783-e2dc-4242-83c6-a6aa57648b95",
+      "position": [
+        0,
+        0,
+        -3.2040903953742905
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        26.026531312546467,
+        1,
+        17.414928780219313
+      ],
+      "geometry": {
+        "type": "box",
+        "depth": 1,
+        "height": 1,
+        "width": 1
+      },
+      "material": {
+        "type": "basic",
+        "color": "#4d4d4d"
+      },
+      "parentId": "3569cfbf-2fbd-43aa-903b-0a10542180ba",
+      "components": {},
+      "name": "Box (1)",
+      "order": 4.549519464493392
+    },
+    "4cfda18d-65d8-4df8-a23c-fcb18e2a0a6a": {
+      "id": "4cfda18d-65d8-4df8-a23c-fcb18e2a0a6a",
+      "position": [
+        -9.453465245112717,
+        0.4964053951532357,
+        -7.3712653484883965
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        0.6088829710770923,
+        0.6088829710770923,
+        0.6088829710770923
+      ],
+      "geometry": null,
+      "material": null,
+      "parentId": "3569cfbf-2fbd-43aa-903b-0a10542180ba",
+      "components": {},
+      "gltfModel": {
+        "src": {
+          "type": "asset",
+          "asset": "assets/bicicleta_v-44.glb"
+        },
+        "animationClip": "",
+        "loop": true
+      },
+      "name": "bicicleta_v-44.glb",
+      "order": 6.4859316516303505,
+      "hidden": false
+    },
+    "0f80cc33-bd47-4ab8-a0b5-fb3775a25b66": {
+      "id": "0f80cc33-bd47-4ab8-a0b5-fb3775a25b66",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        0.9999999999999998
+      ],
+      "scale": [
+        0.04,
+        0.04,
+        0.04
+      ],
+      "parentId": "88453035-dc0f-486d-868a-8ff7c2fda864",
+      "components": {},
+      "gltfModel": {
+        "src": {
+          "type": "asset",
+          "asset": "assets/nathan_animated_003_-_walking_3d_man.glb"
+        },
+        "animationClip": "",
+        "loop": true,
+        "paused": false,
+        "reverse": false
+      },
+      "name": "nathan_animated_003_-_walking_3d_man.glb",
+      "order": 6.693068782165412,
+      "hidden": false
+    }
+  },
+  "spaces": {
+    "88453035-dc0f-486d-868a-8ff7c2fda864": {
+      "id": "88453035-dc0f-486d-868a-8ff7c2fda864",
+      "name": "Default",
+      "activeCamera": "a608ddd9-9379-464d-966f-5d8d8674c83c",
+      "reflections": {
+        "type": "url",
+        "url": "https://cdn.8thwall.com/web/assets/envmap/basic_env_map-m9hqpneh.jpg"
+      }
+    }
+  },
+  "entrySpaceId": "88453035-dc0f-486d-868a-8ff7c2fda864",
+  "runtimeVersion": {
+    "type": "version",
+    "level": "major",
+    "major": 2,
+    "minor": 0,
+    "patch": 0
+  }
+}
