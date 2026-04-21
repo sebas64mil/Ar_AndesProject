@@ -36,7 +36,7 @@ export function Navbar() {
             href="#inicio"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-2xl bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent"
+            className="text-2xl bg-gradient-to-r  from-orange-600 to-orange-400 bg-clip-text text-transparent"
             style={{ fontWeight: 700 }}
           >
             El barrio
@@ -53,8 +53,8 @@ export function Navbar() {
                 transition={{ delay: index * 0.1 }}
                 className={`text-sm transition-colors ${
                   isScrolled
-                    ? "text-gray-700 hover:text-purple-600"
-                    : "text-gray-800 hover:text-purple-600"
+                    ? "text-gray-700 hover:text-orange-600"
+                    : "text-gray-800 hover:text-orange-600"
                 }`}
               >
                 {item.label}
@@ -65,7 +65,7 @@ export function Navbar() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5 }}
-              className="px-6 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md hover:shadow-lg transition-all"
+              className="px-6 py-2 rounded-lg bg-gradient-to-r from-orange-600 to-orange-400 text-white shadow-md hover:shadow-lg transition-all"
             >
               Visitar
             </motion.a>

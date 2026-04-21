@@ -64,15 +64,15 @@ export function Contact() {
             <div className="p-6 rounded-2xl bg-white border border-gray-200 shadow-lg">
               <h3 className="mb-4 text-gray-800 text-xl">Mapa</h3>
 
-              <div className="rounded-2xl overflow-hidden border border-gray-200 bg-gradient-to-br from-purple-100 to-cyan-100 border border-gray-300 flex items-center justify-center">
+              <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-lg flex items-center justify-center">
             <iframe
               src="https://www.google.com/maps?q=4.6014581,-74.0661334&z=15&output=embed"
               width="100%"
               height="450"
-              style={{ border: 0 }}
-              allowFullScreen=""
+              allowFullScreen
               loading="lazy"
-              className="w-full h-[450px]"
+              title="Google Maps - Ubicación Sala Colpatria Universidad de los Andes"
+              className="w-full h-[450px] border-0"
             />
           </div>
             </div>

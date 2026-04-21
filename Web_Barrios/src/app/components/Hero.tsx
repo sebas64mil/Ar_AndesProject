@@ -1,87 +1,109 @@
 import { motion } from "motion/react";
 import { Sparkles, Calendar } from "lucide-react";
+import ImagenFondo from "@/Images/ImagenFondo.png";
+import Ambulancia from "@/Images/Ambulacia.png";
+import Cellphone from "@/Images/cellphone.png";
 
 export function Hero() {
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-purple-50 via-white to-cyan-50">
+    <section id="inicio" className="relative w-full pb-16 md:min-h-screen md:flex md:items-center md:justify-center overflow-hidden bg-gradient-to-b from-yellow-50 via-orange-50 to-yellow-50">
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-300/40 rounded-full blur-[128px]"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-300/40 rounded-full blur-[128px]"></div>
         <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-pink-300/30 rounded-full blur-[128px]"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-100 to-cyan-100 border border-purple-300 backdrop-blur-sm mb-6">
-            <Sparkles className="w-4 h-4 text-cyan-600" />
-            <span className="text-sm text-purple-700">Experiencia Inmersiva</span>
-          </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 w-full flex flex-col md:flex-row items-center gap-8">
+        {/* Contenedor izquierdo */}
+        <div className="flex-1">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
 
-          <h1 className="text-6xl md:text-8xl mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600 bg-clip-text text-transparent" style={{ fontWeight: 700 }}>
-            El barrio
-          </h1>
-          <h2 className="text-3xl md:text-5xl mb-8 text-gray-800" style={{ fontWeight: 600 }}>
-            la ciencia de vivir juntos
-          </h2>
 
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-12">
-            Un viaje interactivo a través de un barrio ficticio de Bogotá,
-            explorando la vida urbana del pasado, presente y futuro
-          </p>
+            <h1 className="text-6xl md:text-8xl mb-6 font-bold bg-gradient-to-r  from-orange-600 to-yellow-400 bg-clip-text text-transparent">
+              El barrio
+            </h1>
+            <h2 className="text-3xl md:text-5xl mb-8 font-semibold text-gray-800">
+              la ciencia de vivir juntos
+            </h2>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/50 hover:shadow-purple-500/70 transition-all"
+            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mb-12">
+              Un viaje interactivo a través de un barrio ficticio de Bogotá,
+              explorando la vida urbana del pasado, presente y futuro
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-start items-center mb-12">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 rounded-xl bg-gradient-to-r from-orange-600 to-orange-400 text-white transition-all"
+                style={{ boxShadow: "0 0 24px rgba(159, 76, 57, 0.7)" }}
+              >
+                Explorar recorrido
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05, backgroundColor: '#FFEDD5' }} // orange-200
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 rounded-xl bg-white/20 border-2 backdrop-blur-sm transition-all flex items-center gap-2"
+                style={{
+                  borderImage: 'linear-gradient(to right, #ea580c, #fbbf24) 1',
+                  borderWidth: 2,
+                  borderRadius: '0.75rem'
+                }}
+              >
+                <Calendar className="w-5 h-5 text-orange-400" />
+                <span className="bg-gradient-to-r from-orange-600 to-orange-400 bg-clip-text text-transparent font-semibold">Ver programación</span>
+              </motion.button>
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="flex-1 w-full relative md:h-96 overflow-visible md:flex md:items-center md:justify-center">
+          {/* Cuadrado 1 - Grande con imagen de fondo */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="w-80 h-80 mx-auto md:absolute md:w-[450px] md:h-[450px] rounded-2xl opacity-90 z-40
+                       md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2 bg-cover bg-center relative flex items-center justify-center"
+            style={{ 
+              backgroundImage: `url(${ImagenFondo})`,
+              boxShadow: " 0 0 24px rgba(159, 76, 57, 0.7)"
+            }}
+          >
+            {/* Div ambulancia - Imagen de fondo */}
+            <div 
+              className="w-[65%] h-[65%] rounded-2xl bg-cover bg-center relative flex items-center justify-center"
+              style={{ 
+                backgroundImage: `url(${Ambulancia})`
+              }}
             >
-              Explorar recorrido
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 rounded-xl bg-white/10 text-white border border-white/20 backdrop-blur-sm hover:bg-white/20 transition-all flex items-center gap-2"
-            >
-              <Calendar className="w-5 h-5" />
-              Ver programación
-            </motion.button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto text-left">
-            <div className="p-6 rounded-xl bg-white border border-purple-200 shadow-lg shadow-purple-100">
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-4">
-                <Calendar className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="mb-2 text-gray-800">Fechas</h3>
-              <p className="text-gray-600">Julio 1 - Agosto 15, 2026</p>
+              {/* Celular con animación AR */}
+              <motion.div 
+                animate={{
+                  x: [0, 80, 80, 60, 0, -60, -80, -60],
+                  y: [0, 50, 0, -30, -50, -30, 0, 30],
+                  rotate: [0, 0, 0, 0, 0, 0, 0, 0]
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="absolute w-24 h-32 md:w-40 md:h-56 z-50"
+              >
+                <img 
+                  src={Cellphone} 
+                  alt="Celular AR"
+                  className="w-full h-full object-contain drop-shadow-lg"
+                />
+              </motion.div>
             </div>
-
-            <div className="p-6 rounded-xl bg-white border border-cyan-200 shadow-lg shadow-cyan-100">
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              </div>
-              <h3 className="mb-2 text-gray-800">Ubicación</h3>
-              <p className="text-gray-600">Sala Colpatria, Universidad de los Andes</p>
-            </div>
-
-            <div className="p-6 rounded-xl bg-white border border-pink-200 shadow-lg shadow-pink-100">
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-pink-500 to-purple-500 flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              </div>
-              <h3 className="mb-2 text-gray-800">Audiencia</h3>
-              <p className="text-gray-600">Estudiantes, familias, turistas</p>
-            </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
 
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
