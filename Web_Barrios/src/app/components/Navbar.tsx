@@ -74,7 +74,7 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg bg-purple-100 text-purple-600"
+            className="md:hidden p-2 rounded-lg bg-gradient-to-r from-orange-600 to-orange-400 text-orange-100"
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6" />
@@ -104,7 +104,7 @@ export function Navbar() {
             <a
               href="#contacto"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block mx-4 px-6 py-2 text-center rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 text-white"
+              className="block mx-4 px-6 py-2 text-center rounded-lg bg-gradient-to-r from-orange-600 to-orange-400 text-white"
             >
               Visitar
             </a>
